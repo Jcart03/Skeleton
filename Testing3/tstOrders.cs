@@ -17,12 +17,12 @@ namespace Testing3
         }
 
         [TestMethod]
-        public void OrderIDPropertyOK()
+        public void OrderIdPropertyOK()
         {
             clsOrder AnOrder = new clsOrder();
             Int32 TestData = 1;
-            AnOrder.OrderID = TestData;
-            Assert.AreEqual(AnOrder.OrderID, TestData);
+            AnOrder.OrderId = TestData;
+            Assert.AreEqual(AnOrder.OrderId, TestData);
         }
 
         [TestMethod]
