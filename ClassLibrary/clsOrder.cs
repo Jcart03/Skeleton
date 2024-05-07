@@ -4,7 +4,7 @@ namespace ClassLibrary
 {
     public class clsOrder
     {
-        public Int32 OrderID { get; set; }
+        public Int32 OrderId { get; set; }
         public string CustomerName { get; set; }
         public string StaffName { get; set; }
         public string OrderNotes { get; set; }
