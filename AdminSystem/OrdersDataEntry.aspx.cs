@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -16,8 +17,24 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsOrder AnOrder = new clsOrder();
+        //capture OrderId
         AnOrder.OrderId = Convert.ToInt32(txtOrderId.Text);
-
+        //capture CustomerName
+        AnOrder.CustomerName = txtCustomerName.Text;
+        //capture StaffName
+        AnOrder.StaffName = txtStaffName.Text;
+        //capture OrderNotes
+        AnOrder.OrderNotes = txtOrderNotes.Text;
+        //capture OrderDate
+        AnOrder.OrderDate = Convert.ToDateTime(txtOrderDate.Text);
+        //capture OrderTime
+        DateTime OrderTime = new DateTime();
+        CultureInfo provider = CultureInfo.InvariantCulture;
+        OrderTime = DateTime.ParseExact(txtOrderTime.Text, "HH:mm", provider);
+        AnOrder.OrderTime = OrderTime.TimeOfDay;
+        //capture OrderShipped
+        AnOrder.OrderShipped = chkOrderShipped.Checked;
+        Session["AnOrder"] = AnOrder;
         Response.Redirect("OrdersViewer.aspx");
     }
 }
