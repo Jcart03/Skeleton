@@ -27,11 +27,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
         AnOrder.OrderNotes = txtOrderNotes.Text;
         //capture OrderDate
         AnOrder.OrderDate = Convert.ToDateTime(txtOrderDate.Text);
-        //capture OrderTime
-        DateTime OrderTime = new DateTime();
-        CultureInfo provider = CultureInfo.InvariantCulture;
-        OrderTime = DateTime.ParseExact(txtOrderTime.Text, "HH:mm", provider);
-        AnOrder.OrderTime = OrderTime.TimeOfDay;
+        //capture OrderItem
+        AnOrder.OrderItem = txtOrderItem.Text;
+        //capture OrderQuantity
+        AnOrder.OrderQuantity = Convert.ToInt32(txtOrderQuantity.Text);
         //capture OrderShipped
         AnOrder.OrderShipped = chkOrderShipped.Checked;
         Session["AnOrder"] = AnOrder;
