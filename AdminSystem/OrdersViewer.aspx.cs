@@ -16,8 +16,9 @@ public partial class _1Viewer : System.Web.UI.Page
         Response.Write(AnOrder.StaffName);
         Response.Write(AnOrder.CustomerName);
         Response.Write(AnOrder.OrderNotes);
-        Response.Write(AnOrder.OrderDate.Date);
-        Response.Write(AnOrder.OrderTime);
+        Response.Write(AnOrder.OrderDate);
+        Response.Write(AnOrder.OrderItem);
+        Response.Write(AnOrder.OrderQuantity);
         Response.Write(AnOrder.OrderShipped);
     }
 }

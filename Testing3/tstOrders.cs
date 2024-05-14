@@ -8,6 +8,13 @@ namespace Testing3
     [TestClass]
     public class tstOrders
     {
+        string CustomerName = "John";
+        string StaffName = "Ben";
+        string OrderNotes = "Doorbell is broken, please knock.";
+        string OrderDate = DateTime.Now.ToString();
+        string OrderItem = "Air Jordans";
+        string OrderQuantity = "1";
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -63,12 +70,21 @@ namespace Testing3
         }
 
         [TestMethod]
-        public void OrderTimePropertyOK()
+        public void OrderItemPropertyOK()
         {
             clsOrder AnOrder = new clsOrder();
-            TimeSpan TestData = DateTime.Now.TimeOfDay;
-            AnOrder.OrderTime = TestData;
-            Assert.AreEqual(AnOrder.OrderTime, TestData);
+            string TestData = "Air Jordans";
+            AnOrder.OrderItem = TestData;
+            Assert.AreEqual(AnOrder.OrderItem, TestData);
+        }
+
+        [TestMethod]
+        public void OrderQuantityPropertyOK()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Int32 TestData = 2;
+            AnOrder.OrderQuantity = TestData;
+            Assert.AreEqual(AnOrder.OrderQuantity, TestData);
         }
 
         [TestMethod]
@@ -104,7 +120,7 @@ namespace Testing3
             }
             Assert.IsTrue(OK);
         }
-        //OrderShipped
+
         [TestMethod]
         public void TestCustomerNameFound()
         {
@@ -166,17 +182,29 @@ namespace Testing3
         }
 
         [TestMethod]
-        public void TestOrderTimeFound()
+        public void TestOrderItemFound()
         {
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
             Int32 OrderId = 21;
-            DateTime OrderTime = new DateTime();
-            CultureInfo provider = CultureInfo.InvariantCulture;
-            OrderTime = DateTime.ParseExact("12:00", "HH:mm", provider);
             Found = AnOrder.Find(OrderId);
-            if (AnOrder.OrderTime != OrderTime.TimeOfDay)
+            if (AnOrder.OrderItem != "Test Item")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestOrderQuantityFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderId = 21;
+            Found = AnOrder.Find(OrderId);
+            if (AnOrder.OrderQuantity != 5)
             {
                 OK = false;
             }
@@ -196,6 +224,15 @@ namespace Testing3
                 OK = false;
             }
             Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsOrder AnOrder = new clsOrder();
+            string Error = "";
+            Error = AnOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
+            Assert.AreEqual(Error, "");
         }
     }
 }

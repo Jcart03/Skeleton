@@ -65,16 +65,28 @@ namespace ClassLibrary
                 mOrderDate = value;
             }
         }
-        public TimeSpan mOrderTime;
-        public TimeSpan OrderTime
+        public string mOrderItem;
+        public string OrderItem
         {
             get
             {
-                return mOrderTime;
+                return mOrderItem;
             }
             set
             {
-                mOrderTime = value;
+                mOrderItem = value;
+            }
+        }
+        public Int32 mOrderQuantity;
+        public Int32 OrderQuantity
+        {
+            get
+            {
+                return mOrderQuantity;
+            }
+            set
+            {
+                mOrderQuantity = value;
             }
         }
         public bool mOrderShipped;
@@ -90,19 +102,22 @@ namespace ClassLibrary
             }
         }
 
-        public bool Find(int orderId)
+        public bool Find(Int32 OrderId)
         {
             mOrderId = 21;
             mCustomerName = "Test Customer";
             mStaffName = "Test Staff";
             mOrderNotes = "Test Notes";
             mOrderDate = Convert.ToDateTime("01/01/2001");
-            DateTime OrderTime = new DateTime();
-            CultureInfo provider = CultureInfo.InvariantCulture;
-            OrderTime = DateTime.ParseExact("12:00", "HH:mm", provider);
-            mOrderTime = OrderTime.TimeOfDay;
+            mOrderItem = "Test Item";
+            mOrderQuantity = 5;
             mOrderShipped = true;
             return true;
+        }
+
+        public string Valid(string customerName, string staffName, string orderNotes, string orderDate, string orderItem, string orderQuantity)
+        {
+            return "";
         }
     }
 
