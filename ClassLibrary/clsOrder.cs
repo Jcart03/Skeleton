@@ -117,7 +117,84 @@ namespace ClassLibrary
 
         public string Valid(string customerName, string staffName, string orderNotes, string orderDate, string orderItem, string orderQuantity)
         {
-            return "";
+            String Error = "";
+            DateTime DateTemp;
+            DateTime DateComp = DateTime.Now.Date;
+            Int32 QuantityTemp;
+
+            // CustomerName validation
+            if (customerName.Length == 0)
+            {
+                Error = Error + "The customer name may not be blank : ";
+            }
+            if (customerName.Length > 50)
+            {
+                Error = Error + "The customer name cannot be longer than 50 characters : ";
+            }
+
+            // StaffName validation
+            if (staffName.Length == 0)
+            {
+                Error = Error + "The staff name may not be blank : ";
+            }
+            if (staffName.Length > 50)
+            {
+                Error = Error + "The staff name cannot be longer than 50 characters : ";
+            }
+
+            // OrderNotes validation
+            if (orderNotes.Length > 100)
+            {
+                Error = Error + "The order notes cannot be longer than 100 characters : ";
+            }
+
+            // OrderDate validation
+            try
+            {
+                DateTemp = Convert.ToDateTime(orderDate);
+                if (DateTemp < DateComp)
+                {
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                if (DateTemp > DateComp)
+                {
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The date was not a valid date : ";                 
+            }
+
+            // OrderItem validation
+            if (orderItem.Length == 0)
+            {
+                Error = Error + "The order item may not be blank : ";
+            }
+            if (orderItem.Length > 50)
+            {
+                Error = Error + "The order item cannot be longer than 50 characters : ";
+            }
+
+            //OrderQuantity validation
+            try
+            {
+                QuantityTemp = Convert.ToInt32(orderQuantity);
+                if (QuantityTemp < 1)
+                {
+                    Error = Error + "The minimum order quanity is 1 : ";
+                }
+                if (QuantityTemp > 99)
+                {
+                    Error = Error + "The maximum order quanity is 99 : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The order quantity was not a valid integer : ";
+            }
+
+            return Error;
         }
     }
 
