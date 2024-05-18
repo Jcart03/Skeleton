@@ -8,6 +8,7 @@ namespace Testing3
     [TestClass]
     public class tstOrders
     {
+        // clean data for tests
         string CustomerName = "John";
         string StaffName = "Ben";
         string OrderNotes = "Doorbell is broken, please knock.";
@@ -15,14 +16,18 @@ namespace Testing3
         string OrderItem = "Air Jordans";
         string OrderQuantity = "1";
 
+        // - INSTANCE AND PROPERTY TESTS
+
+        // clsOrder instance test
+
         [TestMethod]
         public void InstanceOK()
         {
-            //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
-            //test to see that it exists
             Assert.IsNotNull(AnOrder);
         }
+
+        // clsOrder property tests
 
         [TestMethod]
         public void OrderIdPropertyOK()
@@ -95,6 +100,8 @@ namespace Testing3
             AnOrder.OrderShipped = TestData;
             Assert.AreEqual(AnOrder.OrderShipped, TestData);
         }
+
+        // - FIND METHOD TESTS
 
         [TestMethod]
         public void FindMethodOK()
@@ -226,6 +233,8 @@ namespace Testing3
             Assert.IsTrue(OK);
         }
 
+        // - VALIDATION METHOD TESTS
+
         [TestMethod]
         public void ValidMethodOK()
         {
@@ -235,16 +244,16 @@ namespace Testing3
             Assert.AreEqual(Error, "");
         }
 
-        // - Parameter Tests
+        // -- PARAMETER VALIDATION TESTS
 
-        // CustomerName Parameter Test
+        // CustomerName parameter validation test
 
         [TestMethod]
         public void CustomerNameMinMinusOne()
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ 0 characters
+            // test data w/ 0 characters
             string CustomerName = "";
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
             Assert.AreNotEqual(Error, ""); // should be invalid
@@ -255,7 +264,7 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ 1 characters
+            // test data w/ 1 characters
             string CustomerName = "";
             CustomerName = CustomerName.PadRight(1, 'a');
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
@@ -267,7 +276,7 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ 2 characters
+            // test data w/ 2 characters
             string CustomerName = "";
             CustomerName = CustomerName.PadRight(2, 'a');
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
@@ -279,7 +288,7 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ 49 characters
+            // test data w/ 49 characters
             string CustomerName = "";
             CustomerName = CustomerName.PadRight(49, 'a');
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
@@ -291,7 +300,7 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ 50 characters
+            // test data w/ 50 characters
             string CustomerName = "";
             CustomerName = CustomerName.PadRight(50, 'a');
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
@@ -303,7 +312,7 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ 51 characters
+            // test data w/ 51 characters
             string CustomerName = "";
             CustomerName = CustomerName.PadRight(51, 'a');
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
@@ -315,7 +324,7 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ 25 characters
+            // test data w/ 25 characters
             string CustomerName = "";
             CustomerName = CustomerName.PadRight(25, 'a');
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
@@ -327,21 +336,21 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ 500 characters
+            // test data w/ 500 characters
             string CustomerName = "";
             CustomerName = CustomerName.PadRight(500, 'a');
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
             Assert.AreNotEqual(Error, ""); // should be invalid
         }
 
-        // StaffName Parameter Test
+        // StaffName parameter validation test
 
         [TestMethod]
         public void StaffNameMinMinusOne()
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ 0 characters
+            // test data w/ 0 characters
             string StaffName = "";
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
             Assert.AreNotEqual(Error, ""); // should be invalid
@@ -352,7 +361,7 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ 1 characters
+            // test data w/ 1 characters
             string StaffName = "";
             StaffName = StaffName.PadRight(1, 'a');
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
@@ -364,7 +373,7 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ 2 characters
+            // test data w/ 2 characters
             string StaffName = "";
             StaffName = StaffName.PadRight(2, 'a');
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
@@ -376,7 +385,7 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ 49 characters
+            // test data w/ 49 characters
             string StaffName = "";
             StaffName = StaffName.PadRight(49, 'a');
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
@@ -388,7 +397,7 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ 50 characters
+            // test data w/ 50 characters
             string StaffName = "";
             StaffName = StaffName.PadRight(50, 'a');
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
@@ -400,7 +409,7 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ 51 characters
+            // test data w/ 51 characters
             string StaffName = "";
             StaffName = StaffName.PadRight(51, 'a');
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
@@ -412,7 +421,7 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ 25 characters
+            // test data w/ 25 characters
             string StaffName = "";
             StaffName = StaffName.PadRight(25, 'a');
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
@@ -424,21 +433,21 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ 500 characters
+            // test data w/ 500 characters
             string StaffName = "";
             StaffName = StaffName.PadRight(500, 'a');
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
             Assert.AreNotEqual(Error, ""); // should be invalid
         }
 
-        // OrderNotes Parameter Test
+        // OrderNotes parameter validation test
 
         [TestMethod]
         public void OrderNotesMin()
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ 0 characters
+            // test data w/ 0 characters
             string OrderNotes = "";
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
             Assert.AreEqual(Error, ""); // should be valid
@@ -449,7 +458,7 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ 1 characters
+            // test data w/ 1 characters
             string OrderNotes = "";
             OrderNotes = OrderNotes.PadRight(1, 'a');
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
@@ -461,7 +470,7 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ 99 characters
+            // test data w/ 99 characters
             string OrderNotes = "";
             OrderNotes = OrderNotes.PadRight(99, 'a');
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
@@ -473,7 +482,7 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ 100 characters
+            // test data w/ 100 characters
             string OrderNotes = "";
             OrderNotes = OrderNotes.PadRight(100, 'a');
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
@@ -485,7 +494,7 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ 101 characters
+            // test data w/ 101 characters
             string OrderNotes = "";
             OrderNotes = OrderNotes.PadRight(101, 'a');
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
@@ -497,7 +506,7 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ 50 characters
+            // test data w/ 50 characters
             string OrderNotes = "";
             OrderNotes = OrderNotes.PadRight(50, 'a');
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
@@ -509,21 +518,21 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ 500 characters
+            // test data w/ 500 characters
             string OrderNotes = "";
             OrderNotes = OrderNotes.PadRight(500, 'a');
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
             Assert.AreNotEqual(Error, ""); // should be invalid
         }
 
-        // OrderDate Parameter Test
+        // OrderDate parameter validation test
 
         [TestMethod]
         public void OrderDateExtremeMin()
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ today's date minus 100 years
+            // test data w/ today's date minus 100 years
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddYears(-100);
@@ -537,7 +546,7 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ today's date minus 1 day
+            // test data w/ today's date minus 1 day
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddDays(-1);
@@ -551,7 +560,7 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ today's date
+            // test data w/ today's date
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             string OrderDate = TestDate.ToString();
@@ -564,7 +573,7 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ today's date plus 1 day
+            // test data w/ today's date plus 1 day
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddDays(1);
@@ -578,7 +587,7 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ today's date plus 100 years
+            // test data w/ today's date plus 100 years
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddYears(100);
@@ -592,20 +601,20 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ string containing sentence instead of date
+            // test data w/ string containing sentence instead of date
             string OrderDate = "this is not a date!";
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
             Assert.AreNotEqual(Error, ""); // should be invalid
         }
 
-        // OrderItem Parameter Test
+        // OrderItem parameter validation test
 
         [TestMethod]
         public void OrderItemMinMinusOne()
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ 0 characters
+            // test data w/ 0 characters
             string OrderItem = "";
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
             Assert.AreNotEqual(Error, ""); // should be invalid
@@ -616,7 +625,7 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ 1 characters
+            // test data w/ 1 characters
             string OrderItem = "";
             OrderItem = OrderItem.PadRight(1, 'a');
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
@@ -628,7 +637,7 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ 2 characters
+            // test data w/ 2 characters
             string OrderItem = "";
             OrderItem = OrderItem.PadRight(2, 'a');
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
@@ -640,7 +649,7 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ 49 characters
+            // test data w/ 49 characters
             string OrderItem = "";
             OrderItem = OrderItem.PadRight(49, 'a');
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
@@ -652,7 +661,7 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ 50 characters
+            // test data w/ 50 characters
             string OrderItem = "";
             OrderItem = OrderItem.PadRight(50, 'a');
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
@@ -664,7 +673,7 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ 51 characters
+            // test data w/ 51 characters
             string OrderItem = "";
             OrderItem = OrderItem.PadRight(51, 'a');
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
@@ -676,7 +685,7 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ 25 characters
+            // test data w/ 25 characters
             string OrderItem = "";
             OrderItem = OrderItem.PadRight(25, 'a');
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
@@ -688,21 +697,21 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ 500 characters
+            // test data w/ 500 characters
             string OrderItem = "";
             OrderItem = OrderItem.PadRight(500, 'a');
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
             Assert.AreNotEqual(Error, ""); // should be invalid
         }
 
-        // OrderQuantity Parameter Test
+        // OrderQuantity parameter validation test
 
         [TestMethod]
         public void OrderQuantityExtremeMin()
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data of -10
+            // test data of -10
             string OrderQuantity = "-10";
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
             Assert.AreNotEqual(Error, ""); // should be invalid
@@ -713,7 +722,7 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data of 0
+            // test data of 0
             string OrderQuantity = "0";
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
             Assert.AreNotEqual(Error, ""); // should be invalid
@@ -724,7 +733,7 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data of 1
+            // test data of 1
             string OrderQuantity = "1";
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
             Assert.AreEqual(Error, ""); // should be valid
@@ -735,7 +744,7 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data of 2
+            // test data of 2
             string OrderQuantity = "2";
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
             Assert.AreEqual(Error, ""); // should be valid
@@ -746,7 +755,7 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data of 98
+            // test data of 98
             string OrderQuantity = "98";
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
             Assert.AreEqual(Error, ""); // should be valid
@@ -757,7 +766,7 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data of 99
+            // test data of 99
             string OrderQuantity = "99";
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
             Assert.AreEqual(Error, ""); // should be valid
@@ -768,7 +777,7 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data of 100
+            // test data of 100
             string OrderQuantity = "100";
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
             Assert.AreNotEqual(Error, ""); // should be invalid
@@ -779,7 +788,7 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data of 50
+            // test data of 50
             string OrderQuantity = "50";
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
             Assert.AreEqual(Error, ""); // should be valid
@@ -790,7 +799,7 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data of 9999
+            // test data of 9999
             string OrderQuantity = "9999";
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
             Assert.AreNotEqual(Error, ""); // should be invalid
@@ -801,7 +810,7 @@ namespace Testing3
         {
             clsOrder anOrder = new clsOrder();
             string Error = "";
-            // Test Data w/ string containing sentence instead of numbers
+            // test data w/ string containing sentence instead of numbers
             string OrderQuantity = "this is not a number!";
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
             Assert.AreNotEqual(Error, ""); // should be invalid
