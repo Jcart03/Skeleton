@@ -5,6 +5,7 @@ namespace ClassLibrary
 {
     public class clsOrder
     {
+        // property definitions
         private Int32 mOrderId;
         public Int32 OrderId
         {
