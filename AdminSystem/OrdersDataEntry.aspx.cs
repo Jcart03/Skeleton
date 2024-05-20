@@ -61,5 +61,33 @@ public partial class _1_DataEntry : System.Web.UI.Page
             // display error message
             lblError.Text = Error;
         }
+
+
+    }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        clsOrder AnOrder = new clsOrder();
+        Int32 OrderId;
+        Boolean Found = false;
+        try
+        {
+            OrderId = Convert.ToInt32(txtOrderId.Text);
+            Found = AnOrder.Find(OrderId);
+            if (Found)
+            {
+                txtCustomerName.Text = AnOrder.CustomerName;
+                txtStaffName.Text = AnOrder.StaffName;
+                txtOrderNotes.Text = AnOrder.OrderNotes;
+                txtOrderItem.Text = AnOrder.OrderItem;
+                txtOrderQuantity.Text = Convert.ToString(AnOrder.OrderQuantity);
+                txtOrderDate.Text = AnOrder.OrderDate.Date.ToString();
+                chkOrderShipped.Checked = AnOrder.OrderShipped;
+            }
+        }
+        catch
+        {
+            lblError.Text = lblError.Text + "Order with that OrderId does not exist : ";
+        }
     }
 }

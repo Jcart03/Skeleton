@@ -39,7 +39,7 @@ namespace ClassLibrary
             Int32 Index = 0;
             Int32 RecordCount = 0;
             clsDataConnection DB = new clsDataConnection();
-            DB.Execute("sproc_tblOrders_SelectAll");
+            DB.Execute("dbo.sproc_tblOrder_SelectAll");
             RecordCount = DB.Count;
             while (Index < RecordCount)
             {
