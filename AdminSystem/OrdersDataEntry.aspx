@@ -25,6 +25,7 @@
         <asp:TextBox ID="txtOrderItem" runat="server" style="z-index: 1; left: 150px; top: 300px; position: absolute; width: 200px;"></asp:TextBox>
         <asp:TextBox ID="txtOrderQuantity" runat="server" style="z-index: 1; left: 150px; top: 350px; position: absolute; width: 200px;"></asp:TextBox>
         <asp:CheckBox ID="chkOrderShipped" runat="server" style="z-index: 1; left: 150px; top: 400px; position: absolute" Text="Shipped" />
+        <asp:Button ID="btnFind" runat="server" style="z-index: 1; left: 400px; top: 50px; position: absolute" Text="Find" OnClick="btnFind_Click" />
         <asp:Button ID="btnOK" runat="server" style="z-index: 1; left: 15px; top: 500px; position: absolute" Text="OK" OnClick="btnOK_Click" />
         <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 75px; top: 500px; position: absolute" Text="Cancel" />
     </form>

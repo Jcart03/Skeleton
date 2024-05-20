@@ -105,15 +105,25 @@ namespace ClassLibrary
 
         public bool Find(Int32 OrderId)
         {
-            mOrderId = 21;
-            mCustomerName = "Test Customer";
-            mStaffName = "Test Staff";
-            mOrderNotes = "Test Notes";
-            mOrderDate = Convert.ToDateTime("01/01/2001");
-            mOrderItem = "Test Item";
-            mOrderQuantity = 5;
-            mOrderShipped = true;
-            return true;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderId", OrderId);
+            DB.Execute("dbo.sproc_tblOrder_FilterByOrderId");
+            if (DB.Count == 1)
+            {
+                mOrderId = Convert.ToInt32(DB.DataTable.Rows[0]["OrderId"]);
+                mCustomerName = Convert.ToString(DB.DataTable.Rows[0]["CustomerName"]);
+                mStaffName = Convert.ToString(DB.DataTable.Rows[0]["StaffName"]);
+                mOrderNotes = Convert.ToString(DB.DataTable.Rows[0]["OrderNotes"]);
+                mOrderDate = Convert.ToDateTime(DB.DataTable.Rows[0]["OrderDate"]);
+                mOrderItem = Convert.ToString(DB.DataTable.Rows[0]["OrderItem"]);
+                mOrderQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["OrderQuantity"]);
+                mOrderShipped = Convert.ToBoolean(DB.DataTable.Rows[0]["OrderShipped"]);
+                return true;
+            }
+            else
+            {
+                return false;
+            } 
         }
 
         public string Valid(string customerName, string staffName, string orderNotes, string orderDate, string orderItem, string orderQuantity)

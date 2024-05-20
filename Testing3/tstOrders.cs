@@ -108,7 +108,7 @@ namespace Testing3
         {
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
-            Int32 OrderId = 21;
+            Int32 OrderId = 2;
             Found = AnOrder.Find(OrderId);
             Assert.IsTrue(Found);
         }
@@ -119,9 +119,9 @@ namespace Testing3
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderId = 21;
+            Int32 OrderId = 2;
             Found = AnOrder.Find(OrderId);
-            if (AnOrder.OrderId != 21)
+            if (AnOrder.OrderId != 2)
             {
                 OK = false;
             }
@@ -134,9 +134,9 @@ namespace Testing3
             clsOrder AnOrder = new clsOrder(); 
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderId = 21;
+            Int32 OrderId = 2;
             Found = AnOrder.Find(OrderId);
-            if (AnOrder.CustomerName != "Test Customer")
+            if (AnOrder.CustomerName != "John Baker")
             {
                 OK = false;
             }
@@ -149,9 +149,9 @@ namespace Testing3
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderId = 21;
+            Int32 OrderId = 2;
             Found = AnOrder.Find(OrderId);
-            if (AnOrder.StaffName != "Test Staff")
+            if (AnOrder.StaffName != "Alexa Mill")
             {
                 OK = false;
             }
@@ -164,9 +164,9 @@ namespace Testing3
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderId = 21;
+            Int32 OrderId = 2;
             Found = AnOrder.Find(OrderId);
-            if (AnOrder.OrderNotes != "Test Notes")
+            if (AnOrder.OrderNotes != "Please ship in one package")
             {
                 OK = false;
             }
@@ -179,9 +179,9 @@ namespace Testing3
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderId = 21;
+            Int32 OrderId = 2;
             Found = AnOrder.Find(OrderId);
-            if (AnOrder.OrderDate != Convert.ToDateTime("01/01/2001"))
+            if (AnOrder.OrderDate != Convert.ToDateTime("20/05/2024"))
             {
                 OK = false;
             }
@@ -194,9 +194,9 @@ namespace Testing3
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderId = 21;
+            Int32 OrderId = 2;
             Found = AnOrder.Find(OrderId);
-            if (AnOrder.OrderItem != "Test Item")
+            if (AnOrder.OrderItem != "Air Jordans [9]")
             {
                 OK = false;
             }
@@ -209,9 +209,9 @@ namespace Testing3
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderId = 21;
+            Int32 OrderId = 2;
             Found = AnOrder.Find(OrderId);
-            if (AnOrder.OrderQuantity != 5)
+            if (AnOrder.OrderQuantity != 3)
             {
                 OK = false;
             }
@@ -224,9 +224,9 @@ namespace Testing3
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderId = 21;
+            Int32 OrderId = 2;
             Found = AnOrder.Find(OrderId);
-            if (AnOrder.OrderShipped != true)
+            if (AnOrder.OrderShipped != false)
             {
                 OK = false;
             }
