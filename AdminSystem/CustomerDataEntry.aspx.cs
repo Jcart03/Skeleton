@@ -16,14 +16,32 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsCustomer ACustomer = new clsCustomer();
-        ACustomer.Name = txtCustomerName.Text;
-        ACustomer.Email = txtEmail.Text;
-        ACustomer.Customer_Id = Convert.ToInt32(txtCustomerId.Text);
-        ACustomer.Password = txtPassword.Text;
-        ACustomer.Address = txtAddress.Text;
-        ACustomer.Timestamp = Convert.ToDateTime(txtTimestamp.Text);
-        ACustomer.Logged_In = cbLoggedIn.Checked;
-        Session["ACustomer"] = ACustomer;
-        Response.Redirect("CustomerViewer.aspx");
+        string RAWName = txtCustomerName.Text;
+        string RAWEmail = txtEmail.Text;
+        string RAWCustomer_Id = txtCustomerId.Text;
+        string RAWPassword = txtPassword.Text;
+        string RAWAddress = txtAddress.Text;
+        string RAWTimestamp = txtTimestamp.Text;
+        bool RAWLogged_In = cbLoggedIn.Checked;
+        string Error = "";
+        Error = ACustomer.Valid(RAWAddress, RAWEmail, RAWTimestamp, RAWName);
+        if (Error == "")
+        {
+            ACustomer.Name = RAWName;
+            ACustomer.Email = RAWEmail;
+            ACustomer.Customer_Id = Convert.ToInt32(RAWCustomer_Id);
+            ACustomer.Password = RAWPassword;
+            ACustomer.Address = RAWAddress;
+            ACustomer.Timestamp = Convert.ToDateTime(RAWTimestamp);
+            ACustomer.Logged_In = RAWLogged_In;
+            Session["ACustomer"] = ACustomer;
+            Response.Redirect("CustomerViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
+        
+
     }
 }
