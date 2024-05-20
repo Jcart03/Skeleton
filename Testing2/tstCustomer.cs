@@ -189,7 +189,7 @@ namespace Testing2
         {
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
-            string Address = new string('a', 19);
+            string Address = new string('a', 8);
             Error = ACustomer.Valid(Address, email, timestamp, name);
             Assert.AreEqual(Error, "");
         }
@@ -198,7 +198,7 @@ namespace Testing2
         {
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
-            string Address = new string('a', 21);
+            string Address = new string('a', 10);
             Error = ACustomer.Valid(Address, email, timestamp, name);
             Assert.AreNotEqual(Error, "");
         }
@@ -207,7 +207,7 @@ namespace Testing2
         {
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
-            string Address = new string('a', 20);
+            string Address = new string('a', 9);
             Error = ACustomer.Valid(Address, email, timestamp, name);
             Assert.AreEqual(Error, "");
 
@@ -217,7 +217,7 @@ namespace Testing2
         {
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
-            string Address = new string('a', 10);
+            string Address = new string('a', 5);
             Error = ACustomer.Valid(Address, email, timestamp, name);
             Assert.AreEqual(Error, "");
         }
@@ -396,7 +396,7 @@ namespace Testing2
             String Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
-            TestDate = TestDate.AddYears(-1);
+            TestDate = TestDate.AddDays(-1);
             string Timestamp = TestDate.ToString();
             Error = ACustomer.Valid(address, email, Timestamp, name);
             Assert.AreNotEqual(Error, "");
