@@ -47,7 +47,7 @@ namespace ClassLibrary
             {
                 Error = Error + "The address may not be blank : ";
             }
-            if(address.Length > 20)
+            if(address.Length > 9)
             {
                 Error = Error + "The address must be no greater than 20 characters : ";
             }
