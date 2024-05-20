@@ -8,7 +8,7 @@ namespace Testing5
     public class tstSuppliers
     {
         [TestMethod]
-        public void TestMethodOK()
+        public void InstanceOK()
         {
             //create an instance of thee class we want to create
             clsSuppliers AnSuppliers = new clsSuppliers();
