@@ -7,6 +7,8 @@ namespace ClassLibrary
     {
         // private data member for the list
         List<clsOrder> mOrderList = new List<clsOrder>();
+        // private data member for ThisOrder
+        clsOrder mThisOrder = new clsOrder();
 
         // property definitions
         public List<clsOrder> OrderList
@@ -31,7 +33,17 @@ namespace ClassLibrary
                 // to be completed
             }
         } 
-        public clsOrder ThisOrder { get; set; }
+        public clsOrder ThisOrder
+        {
+            get
+            {
+                return mThisOrder;
+            }
+            set
+            {
+                mThisOrder = value;
+            }
+        }
 
         // class constructor
         public clsOrderCollection()
@@ -57,6 +69,20 @@ namespace ClassLibrary
                 Index++;
             }
 
+        }
+
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@CustomerName", mThisOrder.CustomerName);
+            DB.AddParameter("@StaffName", mThisOrder.StaffName);
+            DB.AddParameter("@OrderNotes", mThisOrder.OrderNotes);
+            DB.AddParameter("@OrderDate", mThisOrder.OrderDate);
+            DB.AddParameter("@OrderItem", mThisOrder.OrderItem);
+            DB.AddParameter("@OrderQuantity", mThisOrder.OrderQuantity);
+            DB.AddParameter("@OrderShipped", mThisOrder.OrderShipped);
+
+            return DB.Execute("dbo.sproc_tblOrder_Insert");
         }
     }
 }
