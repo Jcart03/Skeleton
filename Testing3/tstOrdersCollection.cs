@@ -80,5 +80,28 @@ namespace Testing3
             AllOrders.OrderList = TestList;
             Assert.AreEqual(AllOrders.Count, TestList.Count);
         }
+
+        // Add method test
+
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            clsOrder TestOrder = new clsOrder();
+            Int32 PrimaryKey = 0;
+            TestOrder.OrderId = 1;
+            TestOrder.CustomerName = "John";
+            TestOrder.StaffName = "Ben";
+            TestOrder.OrderNotes = "Doorbell is broken, please knock.";
+            TestOrder.OrderDate = DateTime.Now.Date;
+            TestOrder.OrderItem = "Air Jordans";
+            TestOrder.OrderQuantity = 1;
+            TestOrder.OrderShipped = true;
+            AllOrders.ThisOrder = TestOrder;
+            PrimaryKey = AllOrders.Add();
+            TestOrder.OrderId = PrimaryKey;
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            Assert.AreEqual(AllOrders.ThisOrder, TestOrder);
+        }
     }
 }
