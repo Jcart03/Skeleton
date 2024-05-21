@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace ClassLibrary
 {
@@ -120,7 +121,7 @@ namespace ClassLibrary
             }
         }
 
-        public bool Find(int staffId)
+        public bool Find(int StaffId)
         {
             //create an instance of the data connection
             clsDataConnection DB = new clsDataConnection();
@@ -149,5 +150,92 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(string StaffName, string StaffAddress, string StaffEmail, string StartingDate, string StaffSalary)
+        {
+
+            string Error = "";
+            DateTime DateTemp;
+
+            // staffname validation
+            if (StaffName.Length == 0)
+            {
+                Error = Error + "The staff name may not be blank : ";
+
+            }
+
+            if (StaffName.Length > 60)
+
+            {
+                Error = Error + "The staff name must be less than  60 characters : ";
+            }
+
+
+            //startingdate validation 
+
+            DateTime DateComp = DateTime.Now.Date;
+
+            try
+            {
+                DateTemp = Convert.ToDateTime(StartingDate);
+
+                if (DateTemp < DateComp)
+                {
+                    Error = Error + "The Date cannot be in the past : ";
+                }
+                if (DateTemp > DateComp)
+                {
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The date was not valid date : ";
+            }
+
+            //staffaddress validation
+            if (StaffAddress.Length == 0)
+
+            {
+                Error = Error + "The staff address may not be blank : ";
+            }
+
+            if (StaffAddress.Length > 100)
+
+            {
+                Error = Error + "The staff address must be less than 100 characters : ";
+
+            }
+            //staff email validation
+            if (StaffEmail.Length == 0)
+
+            {
+                Error = Error + "The staff email may not be blank : ";
+            }
+
+            if (StaffEmail.Length > 50)
+
+            {
+                Error = Error + "The staff email must be less than 50 characters : ";
+
+            }
+            //staff salary validation
+            if (StaffSalary.Length == 0)
+
+            {
+                Error = Error + "The staff salary may not be blank : ";
+            }
+
+            if (StaffSalary.Length > 18)
+
+            {
+                Error = Error + "The staff salary must be less than 18 characters : ";
+
+            }
+            return Error;
+        }
     }
 }
+
+
+           
