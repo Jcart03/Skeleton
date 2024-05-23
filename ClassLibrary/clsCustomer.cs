@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 
 namespace ClassLibrary
 {
@@ -28,14 +29,25 @@ namespace ClassLibrary
 
         public bool Find(int customerID)
         {
-            mCustomerId = 1;
-            mTimestamp = Convert.ToDateTime("23/12/2022");
-            mLogged_In = false;
-            mName = "John";
-            mEmail = "John@email.com";
-            mPassword = "pass";
-            mAddress = "Addr";
-            return true;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@Customer_Id", customerID);
+            DB.Execute("sproc_tblCustomers_FilterByCustomerId");
+
+            if (DB.Count == 1)
+            {
+                mLogged_In = Convert.ToBoolean(DB.DataTable.Rows[0]["Logged_In"]);
+                mCustomerId= Convert.ToInt32(DB.DataTable.Rows[0]["Customer_Id"]);
+                mEmail = Convert.ToString(DB.DataTable.Rows[0]["Customer_Email"]);
+                mTimestamp = Convert.ToDateTime(DB.DataTable.Rows[0]["Timestamp"]);
+                mName = Convert.ToString(DB.DataTable.Rows[0]["Customer_name"]);
+                mAddress = Convert.ToString(DB.DataTable.Rows[0]["Address"]);
+                mPassword = Convert.ToString(DB.DataTable.Rows[0]["Customer_Hashed_Password"]);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public string Valid(string address, string email, string timestamp, string name)
