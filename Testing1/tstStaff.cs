@@ -9,8 +9,8 @@ namespace Testing1
     [TestClass]
     public class tstStaff
     {
-        string StaffName = "some name";
-        string StaffAddress = "some street";
+        string StaffName = "somename";
+        string StaffAddress = "somestreet";
         string StaffEmail = "some@email.com";
         string StartingDate = DateTime.Now.ToShortDateString();
         string StaffSalary = "37000";

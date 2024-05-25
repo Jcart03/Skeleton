@@ -30,8 +30,8 @@ namespace Testing1
             clsStaff TestItem = new clsStaff();
             //set its properties
             TestItem.StaffId = 1;
-            TestItem.StaffName = "some name";
-            TestItem.StaffAddress = "some street";
+            TestItem.StaffName = "somename";
+            TestItem.StaffAddress = "somestreet";
             TestItem.StaffEmail = "some@email.com";
             TestItem.StartingDate = DateTime.Now;
             TestItem.StaffSalary = 37000;
@@ -52,8 +52,8 @@ namespace Testing1
             //create some test data to assign to the property
             clsStaff TestStaff = new clsStaff();
             TestStaff.StaffId = 1;
-            TestStaff.StaffName = "some name";
-            TestStaff.StaffAddress = "some street";
+            TestStaff.StaffName = "somename";
+            TestStaff.StaffAddress = "somestreet";
             TestStaff.StaffEmail = "some@email.com";
             TestStaff.StartingDate = DateTime.Now;
             TestStaff.StaffSalary = 37000;
@@ -71,8 +71,8 @@ namespace Testing1
             //create the item of test data
             clsStaff TestItem = new clsStaff();
             TestItem.StaffId = 1;
-            TestItem.StaffName = "some name";
-            TestItem.StaffAddress = "some street";
+            TestItem.StaffName = "somename";
+            TestItem.StaffAddress = "somestreet";
             TestItem.StaffEmail = "some@email.com";
             TestItem.StartingDate = DateTime.Now;
             TestItem.StaffSalary = 37000;
@@ -83,6 +83,58 @@ namespace Testing1
             AllStaffs.StaffList = TestList;
             //test to see that the two values are the same
             Assert.AreEqual(AllStaffs.Count, TestList.Count);
+
+        }
+
+        // Add method test
+
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            clsStaffCollection AllStaffs = new clsStaffCollection();
+            clsStaff TestItem = new clsStaff();
+            Int32 PrimaryKey = 0;
+            TestItem.StaffId = 1;
+            TestItem.StaffName = "somename";
+            TestItem.StaffAddress = "somestreet";
+            TestItem.StaffEmail = "some@email.com";
+            TestItem.StartingDate = DateTime.Now.Date;
+            TestItem.StaffSalary = 37000;
+            TestItem.IsManager = true;
+            AllStaffs.ThisStaff = TestItem;
+            PrimaryKey = AllStaffs.Add();
+            TestItem.StaffId = PrimaryKey;
+            AllStaffs.ThisStaff.Find(PrimaryKey);
+            Assert.AreEqual(AllStaffs.ThisStaff, TestItem);
+        }
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsStaffCollection AllStaffs = new clsStaffCollection();
+            clsStaff TestItem = new clsStaff();
+            Int32 PrimaryKey = 0;
+            TestItem.StaffId = 1;
+            TestItem.StaffName = "somename";
+            TestItem.StaffAddress = "somestreet";
+            TestItem.StaffEmail = "some@email.com";
+            TestItem.StartingDate = DateTime.Now.Date;
+            TestItem.StaffSalary = 37000;
+            TestItem.IsManager = true;
+            AllStaffs.ThisStaff = TestItem;
+            PrimaryKey = AllStaffs.Add();
+            TestItem.StaffId = PrimaryKey;
+            TestItem.StaffName = "Randomname";
+            TestItem.StaffAddress = "Randomstreet";
+            TestItem.StaffEmail = "Random@email.com";
+            TestItem.StartingDate = DateTime.Now.Date;
+            TestItem.StaffSalary = 30000;
+            TestItem.IsManager = false;
+            AllStaffs.ThisStaff = TestItem;
+            //update the record
+            AllStaffs.Update();
+            AllStaffs.ThisStaff.Find(PrimaryKey);
+            //test to see if thisstaff matches the test data
+            Assert.AreEqual(AllStaffs.ThisStaff, TestItem);
 
         }
     }
