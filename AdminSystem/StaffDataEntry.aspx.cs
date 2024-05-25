@@ -9,9 +9,20 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 StaffId;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //get the number of the address to be processed
+        StaffId = Convert.ToInt32(Session["StaffId"]);
+        if (IsPostBack == false)
+        {
+            //if this is the not a new record
+            if (StaffId != -1)
+            {
+                //display the current data for the record
+                DisplayStaff();
+            }
+        }
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
@@ -30,15 +41,36 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AnStaff.Valid(StaffName, StaffAddress, StaffEmail, StartingDate, StaffSalary);
         if (Error =="")
         {
+            AnStaff.StaffId = StaffId;
             AnStaff.StaffName = StaffName;
             AnStaff.StaffAddress = StaffAddress;
             AnStaff.StaffEmail = StaffEmail;
             AnStaff.StartingDate = Convert.ToDateTime(DateTime.Now);
             AnStaff.StaffSalary = Convert.ToDecimal(txtStaffSalary.Text);
-            //store the staff inthe session object
-            Session["AnStaff"] = AnStaff;
-            //navigate to the view page
-            Response.Redirect("StaffViewer.aspx");
+            AnStaff.IsManager = chkIsManager.Checked;
+            //create a new instance of the address collection
+            clsStaffCollection StaffList = new clsStaffCollection();
+
+            //if this is a new record i.e. StaffId = -1 then add the data
+            if (StaffId == -1)
+            {
+                //set the ThisStaff property
+                StaffList.ThisStaff = AnStaff;
+                //add the new record
+                StaffList.Add();
+            }
+            else
+            {
+                //find the record to update
+                StaffList.ThisStaff.Find(StaffId);
+                //set the thisstaff property
+                StaffList.ThisStaff = AnStaff;
+                //update the record
+                StaffList.Update();
+            }
+
+            //redirect back to the list page
+            Response.Redirect("StaffList.aspx");
         }
         else
         {
@@ -63,7 +95,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         if (Found == true)
         {
 
-            //display the vakues of the properties in the form
+            //display the values of the properties in the form
             txtStaffName.Text = AnStaff.StaffName;
             txtStaffAddress.Text = AnStaff.StaffAddress;
             txtStaffEmail.Text = AnStaff.StaffEmail;
@@ -76,5 +108,21 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnCancel_Click(object sender, EventArgs e)
     {
 
+    }
+
+    void DisplayStaff()
+    {
+        //create an instance of the staff
+        clsStaffCollection staff = new clsStaffCollection();
+        //find the record to update
+        staff.ThisStaff.Find(StaffId);
+        //display the data for the record
+        txtStaffID.Text = staff.ThisStaff.StaffId.ToString();
+        txtStaffName.Text = staff.ThisStaff.StaffName.ToString();
+        txtStaffAddress.Text = staff.ThisStaff.StaffAddress.ToString();
+        txtStaffEmail.Text = staff.ThisStaff.StaffEmail.ToString();
+        txtStartingDate.Text = staff.ThisStaff.StartingDate.ToString();
+        txtStaffSalary.Text = staff.ThisStaff.StaffSalary.ToString();
+        chkIsManager.Checked = staff.ThisStaff.IsManager;
     }
 }
