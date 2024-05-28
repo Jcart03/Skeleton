@@ -1,6 +1,7 @@
 ﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Data;
 using System.IO;
 using System.Net;
 
@@ -806,6 +807,29 @@ namespace Testing1
             StaffSalary = StaffSalary.PadRight(19, 'a');
             Error = AnStaff.Valid(StaffName, StaffAddress, StaffEmail, StartingDate, StaffSalary);
             Assert.AreNotEqual(Error, ""); // should be invalid
+        }
+
+        [TestMethod]
+        public void StatStatisticsGroupedByStaffAddress()
+
+        { 
+            clsStaff AnStaff = new clsStaff();
+            DataTable dT = AnStaff.StatisticsGroupedByStaffAddress();
+            int noOfRecord = 3;
+            //test
+            Assert.AreEqual(noOfRecord, dT.Rows.Count);
+        
+
+        }
+
+        [TestMethod]
+        public void StatStatisticsGroupedByStaffSalary()
+        {
+            clsStaff AnStaff = new clsStaff();
+            DataTable dT = AnStaff.StatisticsGroupedByStaffSalary();
+            int noOfRecord = 10;
+            //test
+            Assert.AreEqual(noOfRecord, dT.Rows.Count);
         }
     }
 }
