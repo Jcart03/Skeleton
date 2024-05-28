@@ -59,4 +59,50 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Please select a record from the list to edit";
         }
     }
+
+
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        //variable to store the primary key value of the record to be deleted
+        Int32 StaffId;
+        //if a record has been selected from the list
+        if (lstStaffList.SelectedIndex != -1 ) 
+        {
+            //get the primary key value of the record delete
+            StaffId = Convert.ToInt32(lstStaffList.SelectedValue);
+            //store the data in the session object
+            Session["StaffId"] = StaffId;
+            //redirect to the delete page
+            Response.Redirect("StaffConfirmDelete.aspx");
+        }
+        else   //if no record has been selected
+        {
+            //display an error message
+            lblError.Text = "Please select a record from the list to delete";
+
+        }
+    }
+
+
+    protected void btnApplyFilter_Click(object sender, EventArgs e)
+    {
+        clsStaffCollection AnStaff = new clsStaffCollection();
+        AnStaff.ReportByStaffName(txtFilter.Text);
+        lstStaffList.DataSource = AnStaff.StaffList;
+        lstStaffList.DataValueField = "StaffId";
+        lstStaffList.DataTextField = "StaffName";
+        lstStaffList.DataBind();
+    }
+
+    protected void btnClearFilter_Click(object sender, EventArgs e)
+    {
+        clsStaffCollection AnStaff = new clsStaffCollection();
+        AnStaff.ReportByStaffName("");
+        txtFilter.Text = "";
+        lstStaffList.DataSource = AnStaff.StaffList;
+        lstStaffList.DataValueField = "StaffId";
+        lstStaffList.DataTextField = "StaffName";
+        lstStaffList.DataBind();
+    }
 }

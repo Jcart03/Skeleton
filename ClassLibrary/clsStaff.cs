@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.IO;
 
 namespace ClassLibrary
@@ -234,8 +235,25 @@ namespace ClassLibrary
             }
             return Error;
         }
+
+        /****** Statistics Grouped by StaffAddress method ******/
+
+        public DataTable StatisticsGroupedByStaffAddress()
+        {
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.Execute("spoc_tblStaff_Count_GroupByStaffAddress");
+            return DB.DataTable;
+        }
+
+        public DataTable StatisticsGroupedByStaffSalary()
+        {
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.Execute("spoc_tblStaff_Count_GroupByStaffSalary");
+            return DB.DataTable;
+        }
     }
 }
 
 
-           

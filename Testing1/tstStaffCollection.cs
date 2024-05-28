@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace Testing1
 {
     [TestClass]
-    public class tstStaffCollection
+    public class TstStaffCollection
     {
         [TestMethod]
         public void InstanceOK()
@@ -136,6 +136,83 @@ namespace Testing1
             //test to see if thisstaff matches the test data
             Assert.AreEqual(AllStaffs.ThisStaff, TestItem);
 
+        }
+        public void DeleteMethodOK()
+        {
+            clsStaffCollection AllStaffs = new clsStaffCollection();
+            clsStaff TestItem = new clsStaff();
+            Int32 PrimaryKey = 0;
+            TestItem.StaffId = 1;
+            TestItem.StaffName = "somename";
+            TestItem.StaffAddress = "somestreet";
+            TestItem.StaffEmail = "some@email.com";
+            TestItem.StartingDate = DateTime.Now.Date;
+            TestItem.StaffSalary = 37000;
+            TestItem.IsManager = true;
+            //set thisstaff to the test data
+            AllStaffs.ThisStaff = TestItem;
+            //add the record
+            PrimaryKey = AllStaffs.Add();
+            //set the primary key of the test data
+            TestItem.StaffId = PrimaryKey;
+            //find the record
+            AllStaffs.ThisStaff.Find(PrimaryKey);
+            //delete the record
+            AllStaffs.Delete();
+            //now find the record
+            Boolean Found = AllStaffs.ThisStaff.Find(PrimaryKey);
+            //test to see that the record was not found
+            Assert.IsFalse(Found);
+        }
+        [TestMethod]
+        public void ReportByStaffNameMethodOK()
+        {
+            clsStaffCollection AllStaffs = new clsStaffCollection();
+            clsStaffCollection FilteredStaffs = new clsStaffCollection();
+            FilteredStaffs.ReportByStaffName("");
+            Assert.AreEqual(AllStaffs.Count, FilteredStaffs.Count);
+        }
+
+        [TestMethod]
+        public void ReportByStaffNameNoneFound() 
+        {
+            // create an instance of the class we want to create
+            clsStaffCollection FilteredStaffs = new clsStaffCollection();
+            //apply a staff name that doesnt exist
+            FilteredStaffs.ReportByStaffName("");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilteredStaffs);
+        }
+        [TestMethod]
+        public void ReportByStaffNameTestDataFound()
+        {
+            clsStaffCollection FilteredStaffs = new clsStaffCollection();
+            //variable to store the outcome
+            Boolean OK = true;
+            //apply a post code that doesnt exist
+            FilteredStaffs.ReportByStaffName("");
+            //check that the correct number of records are found
+            if (FilteredStaffs.Count == 2)
+            {
+                //check to see that the first record is 25
+                if (FilteredStaffs.StaffList[0].StaffId != 25)
+                {
+                    OK = false;
+
+                }
+                //check to see that the first record is 26
+                if (FilteredStaffs.StaffList[0].StaffId != 26)
+                {
+                    OK = false;
+
+                }
+            }
+            else
+            {
+                OK = false; 
+            }
+            //test to see that there are no records
+            Assert.IsTrue(OK);
         }
     }
 }
