@@ -43,10 +43,10 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 1;
+            Int32 CustomerId = 19;
             Found = ACustomer.Find(CustomerId);
 
-            if (ACustomer.Customer_Id != 1)
+            if (ACustomer.Customer_Id != 19)
             {
                 OK = false;
             }
@@ -59,10 +59,10 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 1;
+            Int32 CustomerId = 19;
             Found = ACustomer.Find(CustomerId);
 
-            if (ACustomer.Timestamp != Convert.ToDateTime("23/12/2022"))
+            if (ACustomer.Timestamp != Convert.ToDateTime("01/01/1754"))
             {
                 OK = false;
             }
@@ -75,7 +75,7 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 1;
+            Int32 CustomerId = 19;
             Found = ACustomer.Find(CustomerId);
 
             if (ACustomer.Logged_In != false)
@@ -91,10 +91,10 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 1;
+            Int32 CustomerId = 19;
             Found = ACustomer.Find(CustomerId);
 
-            if (ACustomer.Name != "John")
+            if (ACustomer.Name != "Name")
             {
                 OK = false;
             }
@@ -107,10 +107,10 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 1;
+            Int32 CustomerId = 19;
             Found = ACustomer.Find(CustomerId);
 
-            if (ACustomer.Email != "John@email.com")
+            if (ACustomer.Email != "Email")
             {
                 OK = false;
             }
@@ -123,10 +123,10 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 1;
+            Int32 CustomerId = 19;
             Found = ACustomer.Find(CustomerId);
 
-            if (ACustomer.Password != "pass")
+            if (ACustomer.Password != "Pass")
             {
                 OK = false;
             }
@@ -139,10 +139,10 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 1;
+            Int32 CustomerId = 19;
             Found = ACustomer.Find(CustomerId);
 
-            if (ACustomer.Address != "Addr")
+            if (ACustomer.Address != "xxxxxx")
             {
                 OK = false;
             }
