@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Reflection;
 
 namespace ClassLibrary
@@ -99,6 +100,20 @@ namespace ClassLibrary
             }
 
             return Error;
+        }
+
+        public DataTable StatisticsGroupedByAddress()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.Execute("sproc_tblCustomers_Count_GroupByAddress");
+            return DB.DataTable;
+        }
+
+        public DataTable StatisticsGroupedByTimestamp()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.Execute("sproc_tblCustomers_Count_GroupByTimestamp");
+            return DB.DataTable;
         }
     }
    

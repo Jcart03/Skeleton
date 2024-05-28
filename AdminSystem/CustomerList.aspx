@@ -18,7 +18,7 @@
             &nbsp;</p>
         <p>
             <asp:Label ID="lblAddress" runat="server" Text="Enter an Address (Postcode)"></asp:Label>
-            <asp:TextBox ID="txtAddress" runat="server" Height="16px" OnTextChanged="TextBox1_TextChanged" style="margin-left: 33px; margin-top: 1px"></asp:TextBox>
+            <asp:TextBox ID="txtAddress" runat="server" Height="16px" OnTextChanged="txtAddress_TextChanged" style="margin-left: 33px; margin-top: 1px"></asp:TextBox>
         </p>
         <p>
             <asp:Button ID="btnApply" runat="server" OnClick="btnApply_Click" style="margin-left: 128px" Text="Apply Filter" Width="87px" />
