@@ -103,5 +103,36 @@ namespace Testing3
             AllOrders.ThisOrder.Find(PrimaryKey);
             Assert.AreEqual(AllOrders.ThisOrder, TestOrder);
         }
+
+        // Update method test
+
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            clsOrder TestOrder = new clsOrder();
+            Int32 PrimaryKey = 0;
+            TestOrder.OrderId = 1;
+            TestOrder.CustomerName = "John";
+            TestOrder.StaffName = "Ben";
+            TestOrder.OrderNotes = "Doorbell is broken, please knock.";
+            TestOrder.OrderDate = DateTime.Now.Date;
+            TestOrder.OrderItem = "Air Jordans";
+            TestOrder.OrderQuantity = 1;
+            TestOrder.OrderShipped = true;
+            AllOrders.ThisOrder = TestOrder;
+            PrimaryKey = AllOrders.Add();
+            TestOrder.OrderId = PrimaryKey;
+            TestOrder.CustomerName = "Lyndon";
+            TestOrder.StaffName = "Jenna";
+            TestOrder.OrderNotes = "Ship in one package.";
+            TestOrder.OrderDate = DateTime.Now.Date;
+            TestOrder.OrderItem = "Crocs";
+            TestOrder.OrderQuantity = 2;
+            TestOrder.OrderShipped = false;
+            AllOrders.Update();
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            Assert.AreEqual(AllOrders.ThisOrder, TestOrder);
+        }
     }
 }

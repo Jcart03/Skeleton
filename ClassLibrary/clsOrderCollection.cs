@@ -71,7 +71,7 @@ namespace ClassLibrary
 
         }
 
-        public int Add()
+        public Int32 Add()
         {
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@CustomerName", mThisOrder.CustomerName);
@@ -83,6 +83,11 @@ namespace ClassLibrary
             DB.AddParameter("@OrderShipped", mThisOrder.OrderShipped);
 
             return DB.Execute("dbo.sproc_tblOrder_Insert");
+        }
+
+        public void Update()
+        {
+            throw new NotImplementedException();
         }
     }
 }
