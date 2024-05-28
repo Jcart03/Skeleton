@@ -102,7 +102,7 @@ namespace ClassLibrary
             return Error;
         }
 
-        public DataTable StatisticsGroupedByAddress()
+        /*public DataTable StatisticsGroupedByAddress()
         {
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_tblCustomers_Count_GroupByAddress");
@@ -114,7 +114,7 @@ namespace ClassLibrary
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_tblCustomers_Count_GroupByTimestamp");
             return DB.DataTable;
-        }
+        } */
     }
    
 }
