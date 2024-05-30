@@ -50,8 +50,11 @@
     <Compile Include="clsStaffCollection.cs" />
     <Compile Include="clsStock.cs" />
     <Compile Include="clsSuppliers.cs" />
-    <Compile Include="clsSuppliersCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
