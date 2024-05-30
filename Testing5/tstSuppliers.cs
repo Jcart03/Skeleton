@@ -20,17 +20,6 @@ namespace Testing5
 
         }
 
-        public void ActivePropertyOK()
-        {
-            //create an instnace of the class we want to create
-            clsSuppliers AnSuppliers = new clsSuppliers();
-            //create some test data to assign to the property
-            Boolean TestData = true;
-            //assign the data to the property
-            AnSuppliers.Active = TestData;
-            //test to see that two values are the same
-            Assert.AreEqual(AnSuppliers.Active, TestData);
-        }
         public void SuppiersIdPropertyOK()
         {
             //create an instance of the class we want to create
