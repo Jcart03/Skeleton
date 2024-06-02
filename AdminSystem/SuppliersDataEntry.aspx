@@ -24,7 +24,7 @@
             <asp:Label ID="ContractStart" runat="server" style="z-index: 1; left: 10px; top: 168px; position: absolute" Text="Contract Start Date"></asp:Label>
         </p>
         <p>
-            <asp:TextBox ID="txtContractStart" runat="server" OnTextChanged="TextBox1_TextChanged" style="z-index: 1; left: 157px; top: 170px; position: absolute; width: 102px; height: 11px"></asp:TextBox>
+            <asp:TextBox ID="txtContractStart" runat="server" style="z-index: 1; left: 157px; top: 170px; position: absolute; width: 102px; height: 11px"></asp:TextBox>
         </p>
         <p>
             <asp:Label ID="IsActive" runat="server" style="z-index: 1; left: 10px; top: 210px; position: absolute; height: 14px" Text="Supplier Active" width="119px"></asp:Label>
@@ -39,7 +39,11 @@
             <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; top: 340px; position: absolute; right: 1058px; width: 28px; bottom: 182px" Text="OK" />
         </p>
         <p>
-            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; top: 341px; position: absolute; width: 64px; height: 26px; left: 129px" Text="Cancel" />
+            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; top: 353px; position: absolute; width: 77px; height: 26px; left: 148px" Text="Cancel" />
+            <asp:Button ID="Button1" runat="server" OnClick="btnOK_Click" Text="OK" Width="86px" />
+        </p>
+        <p>
+            <asp:Button ID="btnFind" runat="server" Height="32px" OnClick="btnFind_Click" Text="Find" Width="86px" />
         </p>
     </form>
 </body>
