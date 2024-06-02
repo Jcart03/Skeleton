@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClassLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,6 +10,14 @@ public partial class _1Viewer : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        clsSuppliers anSuppliers = new clsSuppliers();
+        anSuppliers = (clsSuppliers)Session["anSuppliers"];
+        Response.Write(anSuppliers.SupplierId);
+        Response.Write(anSuppliers.SupplierName);
+        Response.Write(anSuppliers.Address);
+        Response.Write(anSuppliers.PaymentTerms);
+        Response.Write(anSuppliers.ContractStart);
+        Response.Write(anSuppliers.ContactNumber);
+        Response.Write(anSuppliers.IsActive);
     }
 }
