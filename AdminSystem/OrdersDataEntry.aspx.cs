@@ -10,9 +10,32 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 OrderId;
+
+    void DisplayOrder()
+    {
+        clsOrderCollection OrderBook = new clsOrderCollection();
+        OrderBook.ThisOrder.Find(OrderId);
+        txtOrderId.Text = OrderBook.ThisOrder.OrderId.ToString();
+        txtCustomerName.Text = OrderBook.ThisOrder.CustomerName.ToString();
+        txtStaffName.Text = OrderBook.ThisOrder.StaffName.ToString();
+        txtOrderNotes.Text = OrderBook.ThisOrder.OrderNotes.ToString();
+        txtOrderItem.Text = OrderBook.ThisOrder.OrderItem.ToString();
+        txtOrderQuantity.Text = OrderBook.ThisOrder.OrderQuantity.ToString();
+        txtOrderDate.Text = OrderBook.ThisOrder.OrderDate.Date.ToString();
+        chkOrderShipped.Checked = OrderBook.ThisOrder.OrderShipped;
+    }
+
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        OrderId = Convert.ToInt32(Session["OrderId"]);
+        if (IsPostBack == false)
+        {
+            if (OrderId != -1)
+            {
+                DisplayOrder();
+            }
+        }
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
@@ -36,6 +59,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string Error = AnOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
         if (Error == "")
         {
+            // capture the OrderId
+            AnOrder.OrderId = OrderId;
             // capture validated CustomerName
             AnOrder.CustomerName = CustomerName;
             // capture validated StaffName
@@ -54,10 +79,21 @@ public partial class _1_DataEntry : System.Web.UI.Page
             // create new collection instance
             clsOrderCollection OrderList = new clsOrderCollection();
 
-            // add the new record
-            OrderList.ThisOrder = AnOrder;
-            OrderList.Add();
-
+            // if this is a new record (OrderId = -1)
+            if (OrderId == -1)
+            {
+                // add the new record
+                OrderList.ThisOrder = AnOrder;
+                OrderList.Add();
+            }
+            // otherwise update the record
+            else
+            {
+                // find record, set record, and update
+                OrderList.ThisOrder.Find(OrderId);
+                OrderList.ThisOrder = AnOrder;
+                OrderList.Update();
+            }
             // redirect back to list page
             Response.Redirect("OrdersList.aspx");
         }
@@ -66,8 +102,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
             // display error message
             lblError.Text = Error;
         }
-
-
     }
 
     protected void btnFind_Click(object sender, EventArgs e)

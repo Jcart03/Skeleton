@@ -87,7 +87,26 @@ namespace ClassLibrary
 
         public void Update()
         {
-            throw new NotImplementedException();
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderId", mThisOrder.OrderId);
+            DB.AddParameter("@CustomerName", mThisOrder.CustomerName);
+            DB.AddParameter("@StaffName", mThisOrder.StaffName);
+            DB.AddParameter("@OrderNotes", mThisOrder.OrderNotes);
+            DB.AddParameter("@OrderDate", mThisOrder.OrderDate);
+            DB.AddParameter("@OrderItem", mThisOrder.OrderItem);
+            DB.AddParameter("@OrderQuantity", mThisOrder.OrderQuantity);
+            DB.AddParameter("@OrderShipped", mThisOrder.OrderShipped);
+
+            DB.Execute("dbo.sproc_tblOrder_Update");
+        }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderId", mThisOrder.OrderId);
+
+            DB.Execute("dbo.sproc_tblOrder_Delete");
+
         }
     }
 }

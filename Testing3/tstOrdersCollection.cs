@@ -134,5 +134,31 @@ namespace Testing3
             AllOrders.ThisOrder.Find(PrimaryKey);
             Assert.AreEqual(AllOrders.ThisOrder, TestOrder);
         }
+
+        // Delete method test
+
+        [TestMethod] 
+        public void DeleteMethodOK()
+        {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            clsOrder TestOrder = new clsOrder();
+            Int32 PrimaryKey = 0;
+            TestOrder.OrderId = 1;
+            TestOrder.CustomerName = "John";
+            TestOrder.StaffName = "Ben";
+            TestOrder.OrderNotes = "Doorbell is broken, please knock.";
+            TestOrder.OrderDate = DateTime.Now.Date;
+            TestOrder.OrderItem = "Air Jordans";
+            TestOrder.OrderQuantity = 1;
+            TestOrder.OrderShipped = true;
+            AllOrders.ThisOrder = TestOrder;
+            PrimaryKey = AllOrders.Add();
+            TestOrder.OrderId = PrimaryKey;
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            AllOrders.Delete();
+            Boolean Found = AllOrders.ThisOrder.Find(PrimaryKey);
+            Assert.IsFalse(Found);
+
+        }
     }
 }
