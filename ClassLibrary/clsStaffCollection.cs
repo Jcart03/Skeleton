@@ -2,7 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Mail;
+
+using System.Security.Cryptography;
+
 using System.Security;
+
 
 namespace ClassLibrary
 {
