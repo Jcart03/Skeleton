@@ -53,6 +53,16 @@ namespace ClassLibrary
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("dbo.sproc_tblOrder_SelectAll");
             RecordCount = DB.Count;
+            PopulateArray(DB);
+
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            Int32 Index = 0;
+            Int32 RecordCount;
+            RecordCount = DB.Count;
+            mOrderList = new List<clsOrder>();
             while (Index < RecordCount)
             {
                 clsOrder AnOrder = new clsOrder();
@@ -64,11 +74,10 @@ namespace ClassLibrary
                 AnOrder.OrderItem = Convert.ToString(DB.DataTable.Rows[Index]["OrderItem"]);
                 AnOrder.OrderQuantity = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderQuantity"]);
                 AnOrder.OrderShipped = Convert.ToBoolean(DB.DataTable.Rows[Index]["OrderShipped"]);
-                
+
                 mOrderList.Add(AnOrder);
                 Index++;
             }
-
         }
 
         public Int32 Add()
@@ -107,6 +116,15 @@ namespace ClassLibrary
 
             DB.Execute("dbo.sproc_tblOrder_Delete");
 
+        }
+
+        public void ReportByCustomerName(string CustomerName)
+        {
+            // Filters the records based on a full or partial customer name
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@CustomerName", CustomerName);
+            DB.Execute("dbo.sproc_tblOrder_FilterByCustomerName");
+            PopulateArray(DB);
         }
     }
 }

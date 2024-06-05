@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Globalization;
 
 namespace ClassLibrary
@@ -206,6 +207,21 @@ namespace ClassLibrary
             }
 
             return Error;
+        }
+
+        // Stastic group by methods
+        public DataTable StatisticsGroupedByCustomerName()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.Execute("dbo.sproc_tblOrder_Count_GroupByCustomerName");
+            return DB.DataTable;
+        }
+
+        public DataTable StatisticsGroupedByItemName()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.Execute("dbo.sproc_tblOrder_Count_GroupByItemName");
+            return DB.DataTable;
         }
     }
 

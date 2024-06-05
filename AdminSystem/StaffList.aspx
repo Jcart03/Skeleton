@@ -64,12 +64,6 @@ body {
     <form id="form1" runat="server">
         <asp:ListBox ID="lstStaffList" runat="server" Height="300px" Width="100%" CssClass="list-box"></asp:ListBox>
 
-        <asp:Label ID="lblError" runat="server" Text="lblError"></asp:Label>
-        <asp:Button ID="btnApplyFilter" runat="server" Text="Apply Filter" />
-         &nbsp;&nbsp;&nbsp;
-        <asp:Button ID="btnClearFilter" runat="server" Text="Clear Filter" OnClick="btnClearFilter_Click" />
-
-
         <div class="button-group">
             <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" />
             <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" Text="Edit" />
