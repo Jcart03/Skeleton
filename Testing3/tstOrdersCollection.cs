@@ -160,5 +160,49 @@ namespace Testing3
             Assert.IsFalse(Found);
 
         }
+
+        // Report by method tests
+
+        [TestMethod]
+        public void ReportByCustomerNameMethodOK()
+        {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            FilteredOrders.ReportByCustomerName("");
+            Assert.AreEqual(AllOrders.Count, FilteredOrders.Count);
+        }
+
+        [TestMethod]
+        public void ReportByCustomerNameNoneFound()
+        {
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            FilteredOrders.ReportByCustomerName("xxx xxx");
+            Assert.AreEqual(0, FilteredOrders.Count);
+        }
+
+        [TestMethod]
+        public void ReportByCustomerNameTestDataFound()
+        {
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            Boolean OK = true;
+            FilteredOrders.ReportByCustomerName("Test Name");
+            if (FilteredOrders.Count == 2)
+            {
+                if (FilteredOrders.OrderList[0].OrderId != 5) // CREATE TEST DATA AND ADD CORRECT ORDER ID!!!!!!!
+                {
+                    OK = false;
+                }
+                if (FilteredOrders.OrderList[1].OrderId != 6) // CREATE TEST DATA AND ADD CORRECT ORDER ID!!!!!!!
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
     }
 }

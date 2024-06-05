@@ -1,6 +1,7 @@
 ﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Data;
 using System.Globalization;
 
 namespace Testing3
@@ -814,6 +815,29 @@ namespace Testing3
             string OrderQuantity = "this is not a number!";
             Error = anOrder.Valid(CustomerName, StaffName, OrderNotes, OrderDate, OrderItem, OrderQuantity);
             Assert.AreNotEqual(Error, ""); // should be invalid
+        }
+
+        // Statistics method tests
+
+        [TestMethod]
+        public void StatStatisticsGroupedByCustomerName()
+        {
+            clsOrder AnOrder = new clsOrder();
+            DataTable dT = AnOrder.StatisticsGroupedByCustomerName();
+            int noOfRecord = 3; // ADD CORRECT NUMBER OF RECCORDS HERE
+
+            Assert.AreEqual(noOfRecord, dT.Rows.Count);
+
+        }
+
+        [TestMethod]
+        public void StatStatisticsGroupedByItemName()
+        {
+            clsOrder AnOrder = new clsOrder();
+            DataTable dT = AnOrder.StatisticsGroupedByItemName();
+            int noOfRecord = 3; // ADD CORRECT NUMBER OF RECCORDS HERE
+
+            Assert.AreEqual(noOfRecord, dT.Rows.Count);
         }
     }
 }
