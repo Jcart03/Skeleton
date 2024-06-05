@@ -188,11 +188,11 @@ namespace Testing3
             FilteredOrders.ReportByCustomerName("Test Name");
             if (FilteredOrders.Count == 2)
             {
-                if (FilteredOrders.OrderList[0].OrderId != 5) // CREATE TEST DATA AND ADD CORRECT ORDER ID!!!!!!!
+                if (FilteredOrders.OrderList[0].OrderId != 3086)
                 {
                     OK = false;
                 }
-                if (FilteredOrders.OrderList[1].OrderId != 6) // CREATE TEST DATA AND ADD CORRECT ORDER ID!!!!!!!
+                if (FilteredOrders.OrderList[1].OrderId != 3087)
                 {
                     OK = false;
                 }
