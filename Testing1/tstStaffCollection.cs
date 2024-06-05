@@ -179,9 +179,9 @@ namespace Testing1
             // create an instance of the class we want to create
             clsStaffCollection FilteredStaffs = new clsStaffCollection();
             //apply a staff name that doesnt exist
-            FilteredStaffs.ReportByStaffName("");
+            FilteredStaffs.ReportByStaffName("Some Name");
             //test to see that there are no records
-            Assert.AreEqual(0, FilteredStaffs);
+            Assert.AreEqual(0, FilteredStaffs.Count);
         }
         [TestMethod]
         public void ReportByStaffNameTestDataFound()
@@ -190,18 +190,18 @@ namespace Testing1
             //variable to store the outcome
             Boolean OK = true;
             //apply a post code that doesnt exist
-            FilteredStaffs.ReportByStaffName("");
+            FilteredStaffs.ReportByStaffName("KateSmith");
             //check that the correct number of records are found
             if (FilteredStaffs.Count == 2)
             {
-                //check to see that the first record is 25
-                if (FilteredStaffs.StaffList[0].StaffId != 25)
+                //check to see that the first record is 1017
+                if (FilteredStaffs.StaffList[0].StaffId != 1017)
                 {
                     OK = false;
 
                 }
-                //check to see that the first record is 26
-                if (FilteredStaffs.StaffList[0].StaffId != 26)
+                //check to see that the first record is 1018
+                if (FilteredStaffs.StaffList[1].StaffId != 1018)
                 {
                     OK = false;
 

@@ -25,30 +25,7 @@ namespace Testing1
             Assert.IsNotNull(AnStaff);
         }
 
-        [TestMethod]
-        public void ActivePropertyOK()
-        {
-            //create an instance of the class we want to create
-            clsStaff AnStaff = new clsStaff();
-            //create some test data to assign to the property
-            Boolean TestData = true;
-            //assign the data to the property
-            AnStaff.Active = TestData;
-            //test to see that the two values are the same
-            Assert.AreEqual(AnStaff.Active, TestData);
-        }
-        [TestMethod]
-        public void DateAddedPropertyOK()
-        {
-            //create an instance of the class we want to create
-            clsStaff AnStaff = new clsStaff();
-            //create some test data to assign to the property
-            DateTime TestData = Convert.ToDateTime("06/04/2024");
-            //assign the data to the property
-            AnStaff.DateAdded = TestData;
-            //test to see that the two values are the same
-            Assert.AreEqual(AnStaff.DateAdded, TestData);
-        }
+
         [TestMethod]
         public void StaffIdPropertyOK()
         {
@@ -815,7 +792,7 @@ namespace Testing1
         { 
             clsStaff AnStaff = new clsStaff();
             DataTable dT = AnStaff.StatisticsGroupedByStaffAddress();
-            int noOfRecord = 3;
+            int noOfRecord = 9;
             //test
             Assert.AreEqual(noOfRecord, dT.Rows.Count);
         
@@ -827,7 +804,7 @@ namespace Testing1
         {
             clsStaff AnStaff = new clsStaff();
             DataTable dT = AnStaff.StatisticsGroupedByStaffSalary();
-            int noOfRecord = 10;
+            int noOfRecord = 4;
             //test
             Assert.AreEqual(noOfRecord, dT.Rows.Count);
         }

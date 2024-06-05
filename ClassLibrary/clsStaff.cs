@@ -242,7 +242,7 @@ namespace ClassLibrary
         {
             clsDataConnection DB = new clsDataConnection();
 
-            DB.Execute("spoc_tblStaff_Count_GroupByStaffAddress");
+            DB.Execute("sproc_tblStaff_Count_GroupByStaffAddress");
             return DB.DataTable;
         }
 
@@ -250,7 +250,7 @@ namespace ClassLibrary
         {
             clsDataConnection DB = new clsDataConnection();
 
-            DB.Execute("spoc_tblStaff_Count_GroupByStaffSalary");
+            DB.Execute("sproc_tblStaff_Count_GroupByStaffSalary");
             return DB.DataTable;
         }
     }

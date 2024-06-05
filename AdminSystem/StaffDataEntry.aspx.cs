@@ -20,7 +20,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             if (StaffId != -1)
             {
                 //display the current data for the record
-                DisplayStaff();
+                DisplayStaff(StaffId);
             }
         }
     }
@@ -107,22 +107,35 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
-
+        Response.Redirect("StaffList.aspx");
     }
 
-    void DisplayStaff()
+    void DisplayStaff(int StaffId)
     {
         //create an instance of the staff
         clsStaffCollection staff = new clsStaffCollection();
         //find the record to update
-        staff.ThisStaff.Find(StaffId);
-        //display the data for the record
-        txtStaffID.Text = staff.ThisStaff.StaffId.ToString();
-        txtStaffName.Text = staff.ThisStaff.StaffName.ToString();
-        txtStaffAddress.Text = staff.ThisStaff.StaffAddress.ToString();
-        txtStaffEmail.Text = staff.ThisStaff.StaffEmail.ToString();
-        txtStartingDate.Text = staff.ThisStaff.StartingDate.ToString();
-        txtStaffSalary.Text = staff.ThisStaff.StaffSalary.ToString();
-        chkIsManager.Checked = staff.ThisStaff.IsManager;
+        bool found = staff.ThisStaff.Find(StaffId);
+        if (found)
+        {
+            //display the data for the record
+            txtStaffID.Text = staff.ThisStaff.StaffId.ToString();
+            txtStaffName.Text = staff.ThisStaff.StaffName.ToString();
+            txtStaffAddress.Text = staff.ThisStaff.StaffAddress.ToString();
+            txtStaffEmail.Text = staff.ThisStaff.StaffEmail.ToString();
+            txtStartingDate.Text = staff.ThisStaff.StartingDate.ToString();
+            txtStaffSalary.Text = staff.ThisStaff.StaffSalary.ToString();
+            chkIsManager.Checked = staff.ThisStaff.IsManager;
+        }
+        else
+        {
+            lblError.Text = "staff not found";
+        }
+    }
+
+
+    protected void btnReturntomm_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }
