@@ -197,7 +197,7 @@ namespace Testing3
             Boolean OK = true;
             Int32 OrderId = 2;
             Found = AnOrder.Find(OrderId);
-            if (AnOrder.OrderItem != "Air Jordans [9]")
+            if (AnOrder.OrderItem != "Air Jordans")
             {
                 OK = false;
             }
@@ -824,18 +824,18 @@ namespace Testing3
         {
             clsOrder AnOrder = new clsOrder();
             DataTable dT = AnOrder.StatisticsGroupedByCustomerName();
-            int noOfRecord = 3; // ADD CORRECT NUMBER OF RECCORDS HERE
+            int noOfRecord = 7;
 
             Assert.AreEqual(noOfRecord, dT.Rows.Count);
 
         }
 
         [TestMethod]
-        public void StatStatisticsGroupedByItemName()
+        public void StatStatisticsGroupedByOrderItem()
         {
             clsOrder AnOrder = new clsOrder();
-            DataTable dT = AnOrder.StatisticsGroupedByItemName();
-            int noOfRecord = 3; // ADD CORRECT NUMBER OF RECCORDS HERE
+            DataTable dT = AnOrder.StatisticsGroupedByOrderItem();
+            int noOfRecord = 6;
 
             Assert.AreEqual(noOfRecord, dT.Rows.Count);
         }

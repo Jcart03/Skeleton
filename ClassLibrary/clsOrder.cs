@@ -217,10 +217,10 @@ namespace ClassLibrary
             return DB.DataTable;
         }
 
-        public DataTable StatisticsGroupedByItemName()
+        public DataTable StatisticsGroupedByOrderItem()
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.Execute("dbo.sproc_tblOrder_Count_GroupByItemName");
+            DB.Execute("dbo.sproc_tblOrder_Count_GroupByOrderItem");
             return DB.DataTable;
         }
     }

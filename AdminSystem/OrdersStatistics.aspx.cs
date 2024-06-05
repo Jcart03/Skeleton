@@ -18,13 +18,13 @@ public partial class OrdersStatistics : System.Web.UI.Page
         GridViewGroupByCustomerName.DataBind();
         GridViewGroupByCustomerName.HeaderRow.Cells[0].Text = " Total ";
 
-        dT = AnOrder.StatisticsGroupedByItemName();
-        GridViewGroupByItemName.DataSource = dT;
-        GridViewGroupByItemName.DataBind();
-        GridViewGroupByItemName.HeaderRow.Cells[0].Text = " Total ";
+        dT = AnOrder.StatisticsGroupedByOrderItem();
+        GridViewGroupByOrderItem.DataSource = dT;
+        GridViewGroupByOrderItem.DataBind();
+        GridViewGroupByOrderItem.HeaderRow.Cells[0].Text = " Total ";
     }
 
-    protected void Button1_Click(object sender, EventArgs e)
+    protected void btnPreviousPage_Click(object sender, EventArgs e)
     {
         Response.Redirect("OrdersList.aspx");
     }

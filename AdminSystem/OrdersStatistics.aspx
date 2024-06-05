@@ -17,10 +17,10 @@
 
         <div>
             <h3> Order List - Grouped By Item Name </h3>
-            <asp:GridView ID="GridViewGroupByItemName" runat="server"></asp:GridView>
+            <asp:GridView ID="GridViewGroupByOrderItem" runat="server"></asp:GridView>
         </div>
         <div>
-            <asp:Button ID="Button1" runat="server" style="margin-top: 50px" Text="Back to Previous Page" OnClick="Button1_Click"/>
+            <asp:Button ID="btnPreviousPage" runat="server" style="margin-top: 50px" Text="Back to Previous Page" OnClick="btnPreviousPage_Click"/>
         </div>
     </form>
 </body>
