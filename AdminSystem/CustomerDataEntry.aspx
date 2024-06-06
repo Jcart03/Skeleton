@@ -37,7 +37,8 @@
         </p>
         <p>
             <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 36px; top: 255px; position: absolute" Text="OK" />
-            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 83px; top: 255px; position: absolute" Text="Cancel" />
+            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 83px; top: 255px; position: absolute" Text="Cancel" OnClick="btnCancel_Click" />
+            <asp:Button ID="btnReturn" runat="server" OnClick="btnReturn_Click" style="margin-left: 179px; margin-top: 0px; margin-bottom: 0px" Text="Return to Main Menu" Width="150px" />
         </p>
         <p>
             &nbsp;</p>

@@ -102,19 +102,19 @@ namespace ClassLibrary
             return Error;
         }
 
-        /*public DataTable StatisticsGroupedByAddress()
+       public DataTable StatisticsGroupedByLoggedIn()
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.Execute("sproc_tblCustomers_Count_GroupByAddress");
+            DB.Execute("sproc_tblCustomers_Count_GroupByLoggedIn");
             return DB.DataTable;
         }
 
         public DataTable StatisticsGroupedByTimestamp()
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.Execute("sproc_tblCustomers_Count_GroupByTimestamp");
+            DB.Execute("sproc_tblCustomers_Count_GroupTimestamp");
             return DB.DataTable;
-        } */
+        } 
     }
    
 }
