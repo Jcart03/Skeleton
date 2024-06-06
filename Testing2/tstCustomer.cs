@@ -1,7 +1,9 @@
 ﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Data;
 using System.Linq;
+
 
 namespace Testing2
 {
@@ -458,14 +460,24 @@ namespace Testing2
             Error = ACustomer.Valid(address, email, Timestamp, name);
             Assert.AreNotEqual(Error, "");
         }
-        
 
+        [TestMethod]
+        public void StatStatisticsGroupedByLoggedIn()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            System.Data.DataTable dT = ACustomer.StatisticsGroupedByLoggedIn();
+            int noOfRecord = 2;
 
+            Assert.AreEqual(noOfRecord, dT.Rows.Count);
+        }
 
-
-
-
-
-
+        [TestMethod]
+        public void StatStatisticsGroupedByTimestamp()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            DataTable dT = ACustomer.StatisticsGroupedByTimestamp();
+            int noOfRecord = 11;
+            Assert.AreEqual(noOfRecord, dT.Rows.Count);
+        }
     }
 }

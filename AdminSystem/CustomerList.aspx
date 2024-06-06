@@ -23,6 +23,8 @@
         <p>
             <asp:Button ID="btnApply" runat="server" OnClick="btnApply_Click" style="margin-left: 128px" Text="Apply Filter" Width="87px" />
             <asp:Button ID="btnClear" runat="server" OnClick="btnClear_Click" style="margin-left: 32px" Text="Clear Filter" Width="95px" />
+            <asp:Button ID="btnStatistics" runat="server" OnClick="btnStatistics_Click" style="margin-left: 26px" Text="Statistics Page" Width="110px" />
+            <asp:Button ID="btnReturn" runat="server" OnClick="btnReturn_Click" style="margin-left: 28px" Text="Return To Main Menu" Width="147px" />
         </p>
         <p>
             <asp:Label ID="lblError" runat="server"></asp:Label>
